@@ -1,6 +1,6 @@
 //import PropTypes from "prop-types";
 import React, { Component } from "react";
-
+import {link} from "react-router-dom"
 export class Navbar extends Component {
   //static propTypes = {};
 
@@ -8,9 +8,9 @@ export class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <link className="navbar-brand" to="/">
             Daily News
-          </a>
+          </link>
           <button
             className="navbar-toggler"
             type="button"
@@ -25,15 +25,17 @@ export class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <link className="nav-link" aria-current="page" to="/">
                   Home
-                </a>
+                </link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/">
-                  Link
-                </a>
-              </li>
+              <li className="nav-item"><link className="nav-link" to="/business">Business</link></li>
+              <li className="nav-item"><link className="nav-link" to="/entertainment">Entertainment</link></li>
+              <li className="nav-item"><link className="nav-link" to="/general">General</link></li>
+              <li className="nav-item"><link className="nav-link" to="/health">Health</link></li>
+              <li className="nav-item"><link className="nav-link" to="/sciencce">Science</link></li>
+              <li className="nav-item"><link className="nav-link" to="/sports">Sports</link></li>
+              <li className="nav-item"><link className="nav-link" to="/techonology">Technology</link></li>
             </ul>
           </div>
         </div>
