@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 import Newsitem from './Newsitem'
 import Spinner from './Spinner';
-
+import PropTypes from 'prop-types'
 export class News extends Component {
+  static defaultProps={
+    country:'in',
+    pagesize: 8,
+    category:'general'
+  }
+  static propTypes={
+    country:PropTypes.string,
+    pagesize:PropTypes.number,
+    category:PropTypes.string
+  }
   constructor(){
     super();
     this.state={
@@ -12,14 +22,14 @@ export class News extends Component {
     }
   }
   async componentDidMount(){
-    let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=1&pagesize=${this.props.pagesize}`
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=1&pagesize=${this.props.pagesize}`
     this.setState({loading:true})
     let data =await fetch(url);
     let parsedata=await data.json();
     this.setState({articles:parsedata.articles,totalresult:parsedata.totalresult,loading:false})
   }
   handleprev= async ()=>{
-    let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=
     ${this.state.page-1}&pagesize=${this.props.pagesize}`
     this.setState({loading:true})
     let data =await fetch(url);
@@ -33,7 +43,7 @@ export class News extends Component {
   handlenex= async ()=>{
   //  console.log("handlenex")
    if(!(this.state.page+1> Math.ceil(this.state.totalresult/this.props.pagesize))){
-    let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=
     ${this.state.page+1}&pagesize=${this.props.pagesize}`
     this.setState({loading:true})
     let data =await fetch(url);
@@ -53,7 +63,8 @@ export class News extends Component {
         <div className='row my-5'>
             {!this.state.loading && this.state.articles.map((element)=>{
               return <div className='col-md-4' key={element.url}>
-              <Newsitem url={element.url}title={element.title} description={element.description} imageurl={element.urlToImage}></Newsitem>
+              <Newsitem url={element.url} title={element.title} description={element.description} imageurl={element.urlToImage} 
+              author={element.author} date={element.publishedAt} source={element.source.name}></Newsitem>
               </div>
             })}
         </div>
