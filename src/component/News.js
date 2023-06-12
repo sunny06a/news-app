@@ -6,14 +6,41 @@ export class News extends Component {
     super();
     this.state={
       articles:[],
-      loading:false
+      loading:false,
+      page:1
     }
   }
   async componentDidMount(){
-    let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8e2213caa2e64608a6bed08745fa20a8"
+    let url="https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=1&pagesize=20"
     let data =await fetch(url);
     let parsedata=await data.json();
-    this.setState({articles:parsedata.articles})
+    this.setState({articles:parsedata.articles,totalresult:parsedata.totalresult})
+  }
+  handleprev= async ()=>{
+    let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=
+    ${this.state.page-1}&pagesize=20`
+    let data =await fetch(url);
+    let parsedata=await data.json();
+    this.setState({
+      page: this.state.page-1,
+      articles:parsedata.articles
+    })
+  }
+  handlenex= async ()=>{
+   // console.log("handlenex")
+   if (this.state.page+1> Math.ceil(this.state.totalresult/20)){
+
+   }
+   else{
+    let url=`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8e2213caa2e64608a6bed08745fa20a8&page=
+    ${this.state.page+1}&pagesize=20`
+    let data =await fetch(url);
+    let parsedata=await data.json();
+    this.setState({
+      page: this.state.page+1,
+      articles:parsedata.articles
+    })
+  }
   }
   render() {
     return (
@@ -25,6 +52,10 @@ export class News extends Component {
               <Newsitem url={element.url}title={element.title} description={element.description} imageurl={element.urlToImage}></Newsitem>
               </div>
             })}
+        </div>
+        <div className="container d-flex justify-content-between">
+        <button disabled={this.state.page<=1} onClick={this.handleprev} type="button" className="btn btn-primary">&larr; Previous </button>
+        <button onClick={this.handlenex} type="button" className="btn btn-primary">Next &rarr;</button>
         </div>
       </div>
     )
