@@ -20,7 +20,7 @@ export class News extends Component {
       loading:false,
       page:1
     }
-    document.title=`${this.props.category}-Daily News`
+    document.title=`${this.props.category} | Daily News`
   }
 
   async updatenews(){
