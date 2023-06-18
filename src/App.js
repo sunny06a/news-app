@@ -3,6 +3,7 @@ import './App.css';
 import React, { Component } from 'react'
 import Navbar from './component/Navbar';
 import News from './component/News';
+// import bootsrap from '../node_modulesode/b'
 import{
   BrowserRouter ,
   Route,
@@ -10,7 +11,7 @@ import{
 } from "react-router-dom"
 
 export default class App extends Component {
- pagesize=5;
+ pagesize=6;
   render() {
     return (
       <div>
@@ -29,7 +30,7 @@ export default class App extends Component {
         <Route exact path='/technology' element={<News key="technology" pagesize={this.pagesize} country="in" category="technology"></News>}></Route>
       </Routes>
       <Routes>
-        <Route exact path='/enterainment' element={<News key="entertainment" pagesize={this.pagesize} country="in" category="entertainment"></News>}></Route>
+        <Route exact path='/entertainment' element={<News key="entertainment" pagesize={this.pagesize} country="in" category="entertainment"></News>}></Route>
       </Routes>
       <Routes>
         <Route exact path='/science' element={<News key="science" pagesize={this.pagesize} country="in" category="science"></News>}></Route>

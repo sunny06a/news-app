@@ -78,9 +78,9 @@ export class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h2>Daily News - Top headline</h2>
+        <h2 className='text-white text-center'>Top headline</h2>
        {this.state.loading && <Spinner></Spinner>}
-        <div className='row my-5'>
+        <div className='row my-5 justify-content-between'>
             {!this.state.loading && this.state.articles.map((element)=>{
               return <div className='col-md-4' key={element.url}>
               <Newsitem url={element.url} title={element.title} description={element.description} imageurl={element.urlToImage} 
