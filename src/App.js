@@ -12,8 +12,8 @@ import{
 
 export default class App extends Component {
  pagesize=6;
- api=process.env.REAT_APP_NEWS_API;
- // api="8e2213caa2e64608a6bed08745fa20a8";
+//  api=process.env.REACT_APP_NEWSAPI;
+ api="8e2213caa2e64608a6bed08745fa20a8";
   render() {
     return (
       <div>
