@@ -3,7 +3,7 @@
 # Daily News
 </div>
 
-<h3 align="center"><b>A News App created using React Native.</b></h3>
+<h3 align="center"><b>A News App created using React.</b></h3>
 <div align="center">
   
 ![image](https://github.com/sunny06a/news-app/assets/83196848/3b4851a5-7958-44f9-a461-dc19507c482d)
@@ -27,7 +27,7 @@
 <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" /></p>
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
 <ul>
-<li><strong>Languages and Frameworks</strong>: JavaScript, React Native, React, Node.js</li>
+<li><strong>Languages and Frameworks</strong>: JavaScript, React, Node.js</li>
 <li><strong>IDE</strong>: VS Code</li>
   <li><strong>API used</strong>: <a href="https://newsapi.org/">NewsAPI.org</a></li>
 <li><strong>Version Control</strong>: Git and GitHub</li>
